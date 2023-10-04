@@ -120,6 +120,33 @@ struct Answer: Codable {
     let order: Int
     let text: String
     let isCorrect: Int?
+    
+    private enum CodingKeys: String, CodingKey {
+        case image
+        case order
+        case text
+        case isCorrect
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let textString = try? container.decode(String.self, forKey: .text) {
+            self.text = textString
+        } else if let textInt = try? container.decode(Int.self, forKey: .text) {
+            self.text = String(textInt)
+        } else {
+            throw MyDecodingError.invalidTextValue
+        }
+        
+        self.image = try container.decode(ImagePhoto.self, forKey: .image)
+        self.order = try container.decode(Int.self, forKey: .order)
+        self.isCorrect = try container.decodeIfPresent(Int.self, forKey: .isCorrect)
+    }
+    
+    enum MyDecodingError: Error {
+        case invalidTextValue
+    }
 }
 
 struct Question: Codable {
@@ -171,12 +198,44 @@ struct MainPhoto: Codable {
 
 struct ImagePhoto: Codable {
     let author: String
-    let width: String
+    let width: Int?
     let source: String
     let title: String?
     let url: String
     let mediaId: String?
-    let height: String
+    let height: Int?
+    
+    private enum CodingKeys: String, CodingKey {
+        case author
+        case width
+        case source
+        case title
+        case url
+        case mediaId
+        case height
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let width = try? container.decode(Int.self, forKey: .width) {
+            self.width = width
+        } else {
+            self.width = nil
+        }
+        
+        if let height = try? container.decode(Int.self, forKey: .height) {
+            self.height = height
+        } else {
+            self.height = nil
+        }
+        
+        self.author = try container.decode(String.self, forKey: .author)
+        self.source = try container.decode(String.self, forKey: .source)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.mediaId = try container.decodeIfPresent(String.self, forKey: .mediaId)
+    }
 }
 
 struct SponsoredResults: Codable {
@@ -189,4 +248,3 @@ struct SponsoredResults: Codable {
     let mainColor: String
     let imageSource: String
 }
-

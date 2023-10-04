@@ -154,6 +154,7 @@
 		B2F4EFD02AC84B26003CE38A /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				B2F4EFDF2AC84B26003CE38A /* Info.plist */,
 				B2F4F0332ACD764D003CE38A /* SupportingFiles */,
 				B2F4F02E2ACD7575003CE38A /* Modules */,
 				B2F4F0222ACCC630003CE38A /* Utils */,
@@ -263,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				B2F4EFDA2AC84B26003CE38A /* Assets.xcassets */,
-				B2F4EFDF2AC84B26003CE38A /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -712,6 +712,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -739,6 +740,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
