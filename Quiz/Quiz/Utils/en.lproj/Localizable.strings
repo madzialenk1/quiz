@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Quiz
+
+  Created by Magda Pękacka on 04/10/2023.
+  
+*/
+
+"solve_again_button" = "Rozwiąż quiz jeszcze raz";
+"go_to_list_button" = "Wróć do listy quizów";
+"good_job_label" = "Dobra robota!";
+"result_percent" = "Wynik: %d%%";
+"next_button" = "Dalej";
+"previous_button" = "Wróć";
+"finish_quiz_button" = "Zakończ";
+"answer_cell_identifier" = "answerCell";
+"nav_title" = "Lista quizów";
