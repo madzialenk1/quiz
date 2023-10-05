@@ -48,8 +48,7 @@ class QuizDetailsViewModel {
                 self?.quizData.accept(quizList)
             }, onError: { [weak self] error in
                 print("Error fetching quiz data: \(error)")
-                //TODO: add error screen
-                //self?.quizData.onError(error)
+                self?.quizData.accept(nil)
             })
             .disposed(by: disposeBag)
     }

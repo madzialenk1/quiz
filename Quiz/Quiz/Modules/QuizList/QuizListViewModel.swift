@@ -38,7 +38,7 @@ class QuizListViewModel {
                 self?.quizData.onNext(quizList)
             }, onError: { [weak self] error in
                 print("Error fetching quiz data: \(error)")
-                // TODO: add error screen
+                self?.quizData.onError(error)
             })
             .disposed(by: disposeBag)
     }

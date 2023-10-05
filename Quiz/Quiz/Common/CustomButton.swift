@@ -23,7 +23,7 @@ class CustomButton: UIButton {
         setTitleColor(.brown, for: .normal)
         backgroundColor = Colors.customYellow
         titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        layer.cornerRadius = 25
+        layer.cornerRadius = 20
         contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     

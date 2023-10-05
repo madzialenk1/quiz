@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+protocol QuizListCoordinatorDelegate: AnyObject {
+    func openQuizDetails(with id: Int)
+}
+
 class QuizListViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -21,9 +25,9 @@ class QuizListViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let viewModel: QuizListViewModel
-    private var quizCoordinator: QuizCoordinator?
+    private var quizCoordinator: QuizListCoordinatorDelegate?
     
-    init(viewModel: QuizListViewModel, quizCoordinator: QuizCoordinator) {
+    init(viewModel: QuizListViewModel, quizCoordinator: QuizListCoordinatorDelegate) {
         self.viewModel = viewModel
         self.quizCoordinator = quizCoordinator
         super.init(nibName: nil, bundle: nil)
@@ -35,6 +39,7 @@ class QuizListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "nav_title".localized()
         setupUI()
         bindViewModel()
     }

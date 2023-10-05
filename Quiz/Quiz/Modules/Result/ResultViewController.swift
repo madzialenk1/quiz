@@ -10,6 +10,11 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+protocol ResultCoordinatorDelegate: AnyObject {
+    func startQuizAgain()
+    func navigateToListOfQuizzes()
+}
+
 class ResultViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -30,9 +35,9 @@ class ResultViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let viewModel: QuizResultViewModel
-    private weak var coordinator: QuizCoordinator?
+    private weak var coordinator: ResultCoordinatorDelegate?
     
-    init(viewModel: QuizResultViewModel, coordinator: QuizCoordinator) {
+    init(viewModel: QuizResultViewModel, coordinator: ResultCoordinatorDelegate) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -70,20 +75,19 @@ class ResultViewController: UIViewController {
         
         solveAgainButton.snp.makeConstraints {
             $0.trailing.leading.equalToSuperview().inset(20)
-            $0.height.equalTo(50)
+            $0.height.equalTo(40)
             $0.bottom.equalTo(goToQuizzesButton.snp.top).offset(-10)
         }
         
         goToQuizzesButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(-20)
-            $0.height.equalTo(50)
+            $0.height.equalTo(40)
             $0.trailing.leading.equalToSuperview().inset(20)
         }
     }
     
     private func setupRx() {
         viewModel.resultInPercent
-            .map { String(format: "result_percent".localized(), $0) }
             .bind(to: resultLabel.rx.text)
             .disposed(by: disposeBag)
         

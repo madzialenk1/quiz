@@ -12,6 +12,10 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
+protocol QuizDetailsCoordinatorDelegate: AnyObject {
+    func goToResultScreen(selectedAnswers: [Int: AnswerQuestion], questionsCount: Int)
+}
+
 class QuizViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -74,9 +78,9 @@ class QuizViewController: UIViewController {
     private let viewModel: QuizDetailsViewModel
     private let disposeBag = DisposeBag()
     
-    private weak var coordinator: QuizCoordinator?
+    private weak var coordinator: QuizDetailsCoordinatorDelegate?
     
-    init(viewModel: QuizDetailsViewModel, coordinator: QuizCoordinator) {
+    init(viewModel: QuizDetailsViewModel, coordinator: QuizDetailsCoordinatorDelegate) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -121,7 +125,7 @@ class QuizViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-20)
             $0.leading.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            $0.top.equalTo(scrollView.snp.top).offset(20)
         }
         
         scrollView.snp.makeConstraints {
@@ -171,9 +175,9 @@ class QuizViewController: UIViewController {
         tableView.snp.makeConstraints {
             $0.top.equalTo(questionLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-10)
             $0.height.equalTo(150)
             $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(scrollView.snp.bottom)
         }
     }
     

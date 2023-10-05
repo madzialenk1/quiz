@@ -10,9 +10,7 @@ import RxSwift
 import RxCocoa
 
 class QuizResultViewModel {
-    let resultInPercent = BehaviorRelay<Int>(value: 0)
-    
-    private let disposeBag = DisposeBag()
+    let resultInPercent = BehaviorRelay<String>(value: "")
     
     init(selectedAnswers: [Int: AnswerQuestion], questionsCount: Int) {
         countResult(selectedAnswers: selectedAnswers, questionsCount: questionsCount)
@@ -24,6 +22,6 @@ class QuizResultViewModel {
         }
         
         let percentCorrect = Int((Double(correctAnswersCount) / Double(questionsCount)) * 100)
-        resultInPercent.accept(percentCorrect)
+        resultInPercent.accept(String(format: "result_percent".localized(), percentCorrect))
     }
 }
