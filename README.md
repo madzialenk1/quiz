@@ -9,7 +9,8 @@
 - **Instant Feedback**: Get immediate results upon completion of the quiz.
 
 ### Technical Stack:
-- **Swift
-- **RxSwift
-- **MVVM-C
-- **SnapKit
+- Swift
+- RxSwift
+- MVVM-C
+- SnapKit
+- XCTest
