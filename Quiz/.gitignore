@@ -1,0 +1,59 @@
+# Xcode
+.DS_Store
+xcuserdata/
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+Pods.xcodeproj/
+
+# Carthage
+Carthage/Checkouts/
+Carthage/Build/
+Carthage/Build-iOS/
+
+# Swift Package Manager generated folders
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# Compiled source
+*.o
+*.xib
+*.storyboard
+*.xccheckout
+*.xcworkspace
+
+# Compiled Xcode files
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.swiftmodule
+*.swiftdoc
+*.swiftdoc/
+
+# AppCode
+.idea/
+*.iml
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+
+# Test Files
+*.xctest/
+
+# Dependency Manager
+Cartfile
+Cartfile.private
+
+# Mint package manager
+Mintfile

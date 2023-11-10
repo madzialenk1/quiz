@@ -12,7 +12,7 @@ class QuizCoordinator: ResultCoordinatorDelegate, QuizDetailsCoordinatorDelegate
     var navigationController: UINavigationController?
     
     func start() {
-        let viewModel = QuizListViewModel()
+        let viewModel = QuizListViewModel(quizService: QuizService())
         let viewController = QuizListViewController(viewModel: viewModel, quizCoordinator: self)
         navigationController?.pushViewController(viewController, animated: true)
     }

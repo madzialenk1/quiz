@@ -11,10 +11,10 @@ target 'Quiz' do
   pod 'SnapKit'
   pod 'Kingfisher'
 
-
   target 'QuizTests' do
     inherit! :search_paths
     # Pods for testing
+     pod 'RxTest'
   end
 
   target 'QuizUITests' do

@@ -13,30 +13,18 @@ class QuizListViewModel {
     let quizData = BehaviorSubject<QuizList?>(value: nil)
     
     private let disposeBag = DisposeBag()
+    private let quizService: NetworkServiceProtocol
     
-    init() {
+    init(quizService: NetworkServiceProtocol) {
+        self.quizService = quizService
         fetchQuizData()
     }
     
     private func fetchQuizData() {
-        guard let apiUrl = URL(string: Constants.listQuizUrl) else { return }
-        
-        let dataObservable = URLSession.shared.rx.data(request: URLRequest(url: apiUrl))
-        
-        dataObservable
-            .map { data -> QuizList in
-                let decoder = JSONDecoder()
-                do {
-                    let quizList = try decoder.decode(QuizList.self, from: data)
-                    return quizList
-                } catch {
-                    print("Error decoding data: \(error)")
-                    return QuizList(count: 0, items: [])
-                }
-            }
-            .subscribe(onNext: { [weak self] quizList in
+        quizService.fetchQuizData()
+            .subscribe(onSuccess: { [weak self] quizList in
                 self?.quizData.onNext(quizList)
-            }, onError: { [weak self] error in
+            }, onFailure: { [weak self] error in
                 print("Error fetching quiz data: \(error)")
                 self?.quizData.onError(error)
             })
